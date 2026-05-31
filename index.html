@@ -1,0 +1,243 @@
+﻿<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>創価学会 任用試験 対策模擬テスト Vol.2</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Hiragino Kaku Gothic Pro','Noto Sans JP',Meiryo,sans-serif;background:#f5f6f8;color:#1a1a1a;min-height:100vh}
+header{background:#1a3a6b;color:#fff;padding:14px 20px;display:flex;align-items:center;gap:12px;position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,.18)}
+header .logo{font-size:11px;letter-spacing:2px;background:rgba(255,255,255,.15);padding:3px 10px;border-radius:20px;white-space:nowrap}
+header .ttl{font-size:15px;font-weight:700;letter-spacing:1px}
+#app{max-width:680px;margin:0 auto;padding:20px 14px 60px}
+.card{background:#fff;border:1px solid #ddd;border-radius:12px;padding:18px 16px;margin-bottom:12px}
+.badge{display:inline-block;background:#1a3a6b;color:#fff;font-size:11px;letter-spacing:2px;padding:3px 12px;border-radius:20px;margin-bottom:12px}
+.tag{display:inline-block;font-size:11px;font-weight:600;background:#eef3fb;color:#2a5298;padding:3px 10px;border-radius:20px;margin-bottom:10px}
+.extract{background:#f0f4fb;border-left:4px solid #2a5298;border-radius:0 6px 6px 0;padding:10px 14px;font-size:13px;line-height:1.9;color:#444;margin-bottom:14px}
+.q-text{font-size:15px;font-weight:600;color:#1a1a1a;line-height:1.75}
+.prog-wrap{flex:1;height:6px;background:#dde4ef;border-radius:10px;overflow:hidden}
+.prog-bar{height:100%;background:#2a5298;border-radius:10px;transition:width .3s}
+.opt{display:flex;align-items:flex-start;gap:10px;padding:13px 14px;border:1.5px solid #ddd;border-radius:8px;cursor:pointer;background:#fff;font-size:14px;color:#1a1a1a;line-height:1.65;margin-bottom:8px;transition:all .15s;-webkit-tap-highlight-color:transparent}
+.opt:hover{border-color:#2a5298;background:#eef3fb}
+.opt.disabled{cursor:default}
+.opt.correct{border-color:#1a6b3a!important;background:#eaf6ee!important}
+.opt.wrong{border-color:#c0392b!important;background:#fdf0ef!important}
+.opt.faded{opacity:.4}
+.lbl{min-width:28px;height:28px;border-radius:50%;background:#f0f0f0;border:1.5px solid #ccc;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#555;flex-shrink:0}
+.lbl.ok{background:#1a6b3a;color:#fff;border-color:#1a6b3a}
+.lbl.ng{background:#c0392b;color:#fff;border-color:#c0392b}
+.feedback{padding:14px 16px;border-radius:8px;font-size:13px;line-height:1.8;margin-bottom:12px}
+.feedback.ok{background:#eaf6ee;border:1px solid #a0d4b0;color:#1a4d2c}
+.feedback.ng{background:#fdf0ef;border:1px solid #f0b0aa;color:#7a1c1c}
+.btn-main{display:block;width:100%;padding:15px;border-radius:10px;font-size:15px;font-weight:700;background:#1a3a6b;color:#fff;border:none;cursor:pointer;letter-spacing:2px;margin-bottom:10px;-webkit-tap-highlight-color:transparent}
+.btn-sub{flex:1;padding:13px 16px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;border:2px solid #1a3a6b;background:#fff;color:#1a3a6b;-webkit-tap-highlight-color:transparent}
+.result-top{background:#1a3a6b;color:#fff;border-radius:12px;padding:28px 20px 24px;margin-bottom:12px;text-align:center}
+.circle{width:120px;height:120px;border-radius:50%;border:5px solid rgba(255,255,255,.35);display:flex;flex-direction:column;align-items:center;justify-content:center;margin:0 auto 16px;background:rgba(255,255,255,.1)}
+.cat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:16px}
+.cat-card{background:#fff;border:1.5px solid #ddd;border-radius:12px;padding:14px;cursor:pointer;position:relative;transition:all .15s;-webkit-tap-highlight-color:transparent}
+.cat-card.sel{border-color:#2a5298;background:#eef3fb;border-width:2px}
+.mode-row{display:flex;gap:8px}
+.mode-btn{padding:9px 22px;border-radius:20px;font-size:13px;font-weight:700;cursor:pointer;border:1.5px solid #ccc;background:#fff;color:#333;transition:all .15s;-webkit-tap-highlight-color:transparent}
+.mode-btn.active{background:#1a3a6b;color:#fff;border-color:#1a3a6b}
+.quiz-header{display:flex;align-items:center;gap:10px;margin-bottom:16px}
+.counter{font-size:13px;color:#666;white-space:nowrap;font-weight:700}
+.bd-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+.bd-item{background:#f5f6f8;border-radius:8px;padding:10px 12px}
+.review-item{padding:12px 14px;border:1px solid #ddd;border-radius:8px;margin-bottom:8px;font-size:13px}
+.btn-row{display:flex;gap:10px}
+.sec-label{font-size:12px;font-weight:700;color:#666;letter-spacing:1px;margin-bottom:10px}
+footer{text-align:center;font-size:11px;color:#aaa;margin-top:40px}
+</style>
+</head>
+<body>
+<header>
+  <span class="logo">任用試験 対策</span>
+  <span class="ttl">創価学会 模擬テスト Vol.2</span>
+</header>
+<div id="app">
+  <div id="start-screen">
+    <div class="card" style="text-align:center;padding-top:24px">
+      <div class="badge">MOCK EXAM Vol.2</div>
+      <div style="font-size:21px;font-weight:700;color:#1a3a6b;line-height:1.4;margin-bottom:6px">創価学会 任用試験<br>対策模擬テスト</div>
+      <div style="font-size:13px;color:#666">分野と問題数を選んでスタート！</div>
+    </div>
+    <div class="sec-label">出題分野を選ぶ（複数選択可）</div>
+    <div class="cat-grid" id="cat-grid"></div>
+    <div class="card">
+      <div class="sec-label">問題数を選ぶ</div>
+      <div class="mode-row">
+        <button class="mode-btn active" data-n="10" onclick="setMode(this)">10問</button>
+        <button class="mode-btn" data-n="20" onclick="setMode(this)">20問</button>
+        <button class="mode-btn" data-n="999" onclick="setMode(this)">全問</button>
+      </div>
+    </div>
+    <button class="btn-main" onclick="startQuiz()">試 験 ス タ ー ト</button>
+  </div>
+  <div id="quiz-screen" style="display:none">
+    <div class="quiz-header">
+      <div class="prog-wrap"><div class="prog-bar" id="prog"></div></div>
+      <div class="counter" id="counter"></div>
+    </div>
+    <div class="card">
+      <div class="tag" id="q-tag"></div>
+      <div class="extract" id="q-extract" style="display:none"></div>
+      <div class="q-text" id="q-text"></div>
+    </div>
+    <div id="options"></div>
+    <div class="feedback" id="feedback" style="display:none"></div>
+    <button class="btn-main" id="btn-next" onclick="nextQ()" style="display:none"></button>
+  </div>
+  <div id="result-screen" style="display:none">
+    <div class="result-top">
+      <div class="circle">
+        <div style="font-size:38px;font-weight:800;line-height:1" id="res-num"></div>
+        <div style="font-size:14px;opacity:.75" id="res-denom"></div>
+      </div>
+      <div style="font-size:20px;font-weight:700;margin-bottom:4px" id="res-title"></div>
+      <div style="font-size:13px;opacity:.85" id="res-msg"></div>
+    </div>
+    <div class="card">
+      <div class="sec-label">分野別スコア</div>
+      <div class="bd-grid" id="breakdown"></div>
+    </div>
+    <div class="card" id="review-card" style="display:none">
+      <div class="sec-label">間違えた問題の復習</div>
+      <div id="review-list"></div>
+    </div>
+    <div class="btn-row" style="margin-bottom:16px">
+      <button class="btn-sub" onclick="backToStart()">分野を選び直す</button>
+      <button class="btn-main" style="margin-bottom:0;flex:1" onclick="retryQuiz()">もう一度挑戦</button>
+    </div>
+  </div>
+  <footer>創価学会 任用試験 対策模擬テスト Vol.2</footer>
+</div>
+<script>
+const QS=[
+  {cat:"御書３編",q:"妙一尼御前御消息を与えられた妙一尼御前について、正しいものはどれですか？",opts:["家族から逃げて信心を捨てた","厳しい状況でも純粋な信心を貫いた","佐渡で大聖人に仕えた"],ans:1,ex:"妙一尼御前は、幼い子を抱えながら夫に先立たれる厳しい状況の中でも、純粋な信心を貫いた女性門下です。"},
+  {cat:"御書３編",extract:"「凡夫となることを。経文には〔　〕ととかれて候」（妙一尼御前御消息）",q:"〔　〕に入る御文の主旨として正しいものはどれですか？",opts:["強敵を倒してはじめて力ある者と分かる","苦難を乗り越えてこそ信心に意味がある","もし法を聞くことがあれば一人として成仏しない人はいない"],ans:2,ex:"「もし法を聞くことがあれば、一人として成仏しない者はいない」——法華経を信じれば必ず成仏できるという大聖人の確信が示されています。"},
+  {cat:"御書３編",extract:"「行学の〔C〕をはげみ候べし、行学たえなば〔D〕はあるべからず、行学は〔E〕よりをこるべく候」（諸法実相抄）",q:"〔C〕〔D〕〔E〕の正しい組み合わせはどれですか？",opts:["C=一道、D=幸福、E=題目","C=二道、D=仏法、E=信心","C=三道、D=成仏、E=功徳"],ans:1,ex:"「行学の二道をはげみ、仏法は信心よりをこるべく候」。行と学の根本は信心です。"},
+  {cat:"御書３編",extract:"「一生はゆめの上・明日をごせず」（諸法実相抄）",q:"諸法実相抄はどのような内容の御書ですか？正しいものを選びなさい。",opts:["末法における法華経弘通の困難を説いた御書","行学の二道を励み、信心を根本に化他を行うよう示された御書","佐渡流罪中に著された人本尊開顕の書"],ans:1,ex:"諸法実相抄は、行学の二道を励み、自行化他にわたる信心実践の大切さを示された御書です。"},
+  {cat:"御生涯",q:"日蓮大聖人が生まれたのはいつ、どこですか？",opts:["貞応元年（1222年）2月16日・安房国","建長5年（1253年）4月28日・鎌倉","弘長元年（1261年）5月・伊豆"],ans:0,ex:"大聖人は貞応元年（1222年）2月16日、安房国長狭郡東条郷（現在の千葉県鴨川市）の漁民の家にお生まれになりました。"},
+  {cat:"御生涯",q:"日蓮大聖人が最初に修学された寺はどこですか？",opts:["延暦寺（えんりゃくじ）","建長寺（けんちょうじ）","清澄寺（きよすみでら）"],ans:2,ex:"大聖人は12歳のとき清澄寺に入り、道善房を師匠として仏法を学び始められました。"},
+  {cat:"御生涯",q:"立正安国論で予言した「自界叛逆難」が的中した出来事はどれですか？",opts:["二月騒動（にがつそうどう）","正嘉の大地震","蒙古の襲来（もうこのしゅうらい）"],ans:0,ex:"「自界叛逆難」（国内の内乱）は二月騒動（北条氏の内乱）として的中しました。「他国侵逼難」は蒙古の襲来として的中しています。"},
+  {cat:"御生涯",q:"「小松原の法難」はいつ起きた法難ですか？",opts:["文永8年（1271年）9月","弘長元年（1261年）5月","文永元年（1264年）11月"],ans:2,ex:"文永元年（1264年）11月、東条景信による襲撃が小松原（現在の千葉県）で起こりました。"},
+  {cat:"御生涯",q:"佐渡流罪中に著された「法本尊開顕の書」はどれですか？",opts:["開目抄（かいもくしょう）","立正安国論","観心本尊抄（かんじんのほんぞんしょう）"],ans:2,ex:"観心本尊抄は佐渡流罪中に著された「法本尊開顕の書」です。開目抄は「人本尊開顕の書」と呼ばれています。"},
+  {cat:"御生涯",q:"大聖人が第3回の国主諌暁で直接対面し強く諌めた相手は誰ですか？",opts:["平左衛門尉頼綱（へいのさえもんのじょうよりつな）","北条時頼","東条景信"],ans:0,ex:"文永11年（1274年）3月、佐渡から鎌倉に帰った大聖人は平左衛門尉頼綱と対面し、蒙古の再来などを警告して強く諌められました。"},
+  {cat:"御生涯",q:"熱原の法難において大聖人が示されたことは何ですか？",opts:["出世の本懐（しゅっせのほんかい）","立宗宣言","発迹顕本"],ans:0,ex:"弘安2年（1279年）の熱原の法難を機に、農民信徒が不惜身命で信仰を貫いたことで民衆仏法が現実のものとなり、大聖人は出世の本懐を示されました。"},
+  {cat:"御生涯",q:"大聖人が御入滅される前、最後に向かわれた場所はどこですか？",opts:["池上（いけがみ）","身延（みのぶ）","鎌倉（かまくら）"],ans:0,ex:"大聖人は弘安5年（1282年）9月、身延を出発し常陸へ向かう途中、池上（東京都大田区）に到着。10月13日に御入滅されました。"},
+  {cat:"南無妙法蓮華経・十界・成仏",q:"「煩悩即菩提」「生死即涅槃」とは何を意味しますか？",opts:["煩悩は永遠になくならないと諦めること","煩悩や苦しみが妙法の信受によって悟りや安らぎの境涯に転じること","煩悩を滅して涅槃を得ること"],ans:1,ex:"「煩悩即菩提」「生死即涅槃」とは、煩悩や苦しみを否定するのではなく、妙法を信受することでその煩悩・苦しみ自体が悟りや安らぎの境涯に転じることを示しています。"},
+  {cat:"南無妙法蓮華経・十界・成仏",q:"「天界」の正しい説明はどれですか？",opts:["仏の教えを聞いて部分的な覚りを得た境涯","常に他者に勝ろうとする闘争の境涯","欲望が満たされた喜びの境涯。ただし条件が崩れると消える"],ans:2,ex:"天界は欲望が満たされたときの喜びの境涯ですが、条件が整っているときだけ輝きます。条件が崩れると喜びも消えてしまう相対的な境涯です。"},
+  {cat:"南無妙法蓮華経・十界・成仏",q:"「修羅界」の正しい説明はどれですか？",opts:["際限ない欲望に振り回される境涯","目先の利害にとらわれ理性が働かない境涯","常に他者と比べ勝ろうとする闘争的な境涯"],ans:2,ex:"修羅界は常に他者に勝ろうとする「勝他の念」が強い境涯です。"},
+  {cat:"南無妙法蓮華経・十界・成仏",q:"「声聞界」の正しい説明はどれですか？",opts:["縁を観察して独力で覚りを得た境涯","利他の実践で慈悲の心を万人に向ける境涯","仏の教えを聞き部分的な覚りを得た境涯"],ans:2,ex:"声聞界は仏の教えを聞いて部分的な覚りを得た境涯です。縁覚界は独力で観察し覚りを得た境涯で、どちらも「二乗」と呼ばれます。"},
+  {cat:"南無妙法蓮華経・十界・成仏",q:"「仏界」の正しい説明はどれですか？",opts:["死後に到達できる境涯","根源の法に目覚めた最も尊極の生命境涯","特別な修行をした人だけが得られる境涯"],ans:1,ex:"仏界は根源の法（南無妙法蓮華経）に目覚めた最高の生命境涯です。大聖人の仏法では死後や別世界のものではなく、今この生命の中に開くことができます。"},
+  {cat:"南無妙法蓮華経・十界・成仏",q:"「即身成仏」とは何ですか？",opts:["凡夫の身のままこの一生のうちに仏の生命境涯を開くこと","死後に生まれ変わって成仏すること","長い修行の末に成仏すること"],ans:0,ex:"即身成仏とは、今の凡夫の身のままこの一生のうちに仏の生命境涯を開くことです。これが日蓮大聖人の仏法の特徴であり「一生成仏」ともいいます。"},
+  {cat:"信行学・三証・難",q:"「文証」とは何ですか？",opts:["道理・論理による証明","経典・御書などの聖典に基づく証拠","実際の生活に現れた結果による証明"],ans:1,ex:"文証とは、経典や御書などの聖典に基づく証拠のことです。理証は道理・論理による証明、現証は実際の生活や境涯に現れた結果による証明です。"},
+  {cat:"信行学・三証・難",q:"「信（しん）」の正しい説明はどれですか？",opts:["御本尊・法華経を受け入れ仏法の境涯を開いていくことの根本","教学を研鑽して正しい理解を深めること","生命を変革していく具体的な実践そのもの"],ans:0,ex:"「信」は御本尊・法華経を受け入れること。これが仏法の境涯を開いていく根本です。信・行・学の三つは一体であり、どれが欠けても成立しません。"},
+  {cat:"信行学・三証・難",q:"「行（ぎょう）」の正しい説明はどれですか？",opts:["御本尊を信じて唱題・弘教する具体的な実践","教学を研鑽して正しい理解を深めること","経典や御書の内容を受け入れること"],ans:0,ex:"「行」は御本尊を信じて唱題・弘教するという具体的な実践です。自行（自ら実践する）と化他（他の人に教える）の両面があります。"},
+  {cat:"信行学・三証・難",q:"「三障」のうち「煩悩障」の正しい説明はどれですか？",opts:["貪り・怒り・疑惑などの煩悩が信心修行の障害となるもの","過去の悪業が障害となるもの","悪業の報いとして受ける境遇が障害となるもの"],ans:0,ex:"煩悩障は貪り・怒り・疑惑などの煩悩が信心修行の障害となるものです。業障は過去の悪業、報障は悪業の報いとして受ける境遇が障害となります。"},
+  {cat:"信行学・三証・難",q:"「俗衆増上慢」の正しい説明はどれですか？",opts:["仏道修行者・僧侶が迫害する","無知な一般の人々が法華経の行者を迫害する","聖者のように仰がれる高僧が権力者に讒言して弾圧を加える"],ans:1,ex:"俗衆増上慢は無知な一般の人々が法華経の行者を迫害するもの。道門増上慢は仏道修行者・僧侶、僭聖増上慢は高僧が讒言して弾圧を加えるものです。"},
+  {cat:"信行学・三証・難",q:"「道門増上慢」の正しい説明はどれですか？",opts:["無知な一般の人々が迫害する","仏道修行者・僧侶が法華経の行者を迫害する","聖者のように仰がれる高僧が讒言して弾圧を加える"],ans:1,ex:"道門増上慢は仏道修行者・僧侶が法華経の行者を迫害するものです。三類の強敵は迫害する者の性質によって三つに分けられています。"},
+  {cat:"広宣流布と創価学会",q:"牧口常三郎先生が着目した「価値」の三種類として正しいものはどれですか？",opts:["利（り）・善（ぜん）・美（び）","真（しん）・善（ぜん）・美（び）","智（ち）・仁（じん）・勇（ゆう）"],ans:0,ex:"牧口先生は「価値」を美・善・利の三つとして独自の価値論を構築されました。「真」は価値ではなく認識の問題として区別されています。"},
+  {cat:"広宣流布と創価学会",q:"戸田城聖先生が獄中で悟達された内容として正しいものはどれですか？",opts:["「仏とは生命なり」","「人の振る舞いこそが仏法の根本」","「広宣流布は青年が担う」"],ans:0,ex:"戸田先生は獄中で法華経を読み続ける中で「仏とは生命なり」と悟達されました。これが戸田先生の仏法を現代に蘇らせる教団としての自覚の原点となりました。"},
+  {cat:"広宣流布と創価学会",q:"池田大作先生と戸田城聖先生が初めて出会ったのはいつですか？",opts:["昭和26年（1951年）5月3日","昭和20年（1945年）7月3日","昭和22年（1947年）8月14日"],ans:2,ex:"昭和22年（1947年）8月14日、池田先生（当時19歳）は戸田先生が開いた座談会に参加し、出会われました。"},
+  {cat:"広宣流布と創価学会",q:"「10月2日」はどのような記念日ですか？",opts:["戸田先生が第2代会長に就任した日","池田先生が世界広布の第一歩として南北アメリカへ出発した日","池田先生がSGI会長に就任した日"],ans:1,ex:"昭和35年（1960年）10月2日、池田先生が世界広布の第一歩として南北アメリカへ出発された日です。"},
+  {cat:"広宣流布と創価学会",q:"創価学会が目指す宗教のあり方として正しいものはどれですか？",opts:["寺院制度を中心とした伝統的な宗教形式の維持","「人間のための宗教」——人間を強く・善く・賢くする仏法","法主が神聖であるとする法主信仰の確立"],ans:1,ex:"創価学会は「人間のための宗教」を目指し、仏法を通じて人間を強く・善く・賢くすることを宗教の目的としています。"},
+  {cat:"広宣流布と創価学会",q:"「広宣流布」の正しい意味はどれですか？",opts:["南無妙法蓮華経の仏法を世界中に弘め万人の幸福と世界の平和を実現していくこと","特定の地域で法華経を広めること","寺院や僧侶を通じて仏法を伝えること"],ans:0,ex:"広宣流布とは、南無妙法蓮華経の仏法を世界中に弘め、万人の幸福と世界の平和・文化・教育の実現を目指していくことです。"},
+  {cat:"広宣流布と創価学会",q:"「異体同心（いたいどうしん）」の正しい説明はどれですか？",opts:["すべての人が同じ考え・同じ意見をもつこと","それぞれ個性・立場は異なっても広宣流布という同じ目標・同じ心で団結すること","一人の指導者に全員が従うこと"],ans:1,ex:"異体同心とは、それぞれ個性や立場は異なっていても（異体）、広宣流布という同じ目標・同じ心で団結する（同心）ことです。"}
+];
+const CATS=[...new Set(QS.map(q=>q.cat))];
+const ICONS={"御書３編":"📜","御生涯":"⛩️","南無妙法蓮華経・十界・成仏":"🌸","信行学・三証・難":"🔥","広宣流布と創価学会":"🌍"};
+const LBLS=["ア","イ","ウ","エ"];
+let selCats=new Set(CATS),modeN=10,qs=[],idx=0,picked=null,score=0,wrongs=[],userAns=[];
+function shuffle(a){const r=[...a];for(let i=r.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[r[i],r[j]]=[r[j],r[i]];}return r;}
+function renderCats(){
+  const g=document.getElementById("cat-grid");g.innerHTML="";
+  CATS.forEach(cat=>{
+    const cnt=QS.filter(q=>q.cat===cat).length;
+    const d=document.createElement("div");d.className="cat-card"+(selCats.has(cat)?" sel":"");
+    d.innerHTML=`<div style="font-size:22px;margin-bottom:6px">${ICONS[cat]}</div><div style="font-size:13px;font-weight:600;line-height:1.4">${cat}</div><div style="font-size:11px;color:#888;margin-top:3px">${cnt}問</div>${selCats.has(cat)?'<div style="position:absolute;top:8px;right:8px;width:20px;height:20px;border-radius:50%;background:#2a5298;color:#fff;font-size:12px;display:flex;align-items:center;justify-content:center;font-weight:700">✓</div>':""}`;
+    d.onclick=()=>{if(selCats.has(cat)){if(selCats.size===1)return;selCats.delete(cat);}else selCats.add(cat);renderCats();};
+    g.appendChild(d);
+  });
+}
+function setMode(btn){document.querySelectorAll(".mode-btn").forEach(b=>b.classList.remove("active"));btn.classList.add("active");modeN=parseInt(btn.dataset.n);}
+function startQuiz(){
+  const pool=shuffle(QS.filter(q=>selCats.has(q.cat)));
+  qs=pool.slice(0,Math.min(modeN,pool.length));
+  idx=0;picked=null;score=0;wrongs=[];userAns=[];
+  document.getElementById("start-screen").style.display="none";
+  document.getElementById("quiz-screen").style.display="block";
+  document.getElementById("result-screen").style.display="none";
+  renderQ();
+}
+function renderQ(){
+  const q=qs[idx],tot=qs.length;
+  document.getElementById("prog").style.width=((idx/tot)*100)+"%";
+  document.getElementById("counter").textContent=(idx+1)+" / "+tot;
+  document.getElementById("q-tag").textContent=q.cat;
+  const ext=document.getElementById("q-extract");
+  if(q.extract){ext.style.display="block";ext.textContent=q.extract;}else ext.style.display="none";
+  document.getElementById("q-text").textContent=q.q;
+  document.getElementById("feedback").style.display="none";
+  document.getElementById("btn-next").style.display="none";
+  const od=document.getElementById("options");od.innerHTML="";
+  q.opts.forEach((opt,i)=>{
+    const d=document.createElement("div");d.className="opt";
+    d.innerHTML=`<div class="lbl">${LBLS[i]}</div><span>${opt}</span>`;
+    d.onclick=()=>pick(i);od.appendChild(d);
+  });
+}
+function pick(i){
+  if(picked!==null)return;picked=i;
+  const q=qs[idx],ok=i===q.ans;
+  if(ok)score++;else wrongs.push({q:q.q,correct:q.opts[q.ans],yours:q.opts[i]});
+  userAns.push(i);
+  document.querySelectorAll(".opt").forEach((el,j)=>{
+    el.onclick=null;el.classList.add("disabled");
+    if(j===q.ans){el.classList.add("correct");el.querySelector(".lbl").className="lbl ok";}
+    else if(j===i&&!ok){el.classList.add("wrong");el.querySelector(".lbl").className="lbl ng";}
+    else el.classList.add("faded");
+  });
+  const fb=document.getElementById("feedback");
+  fb.className="feedback "+(ok?"ok":"ng");
+  fb.innerHTML=ok?`<strong>✓ 正解！</strong>　${q.ex}`:`<strong>✗ 不正解</strong>　正解は「${LBLS[q.ans]}」です。<br>${q.ex}`;
+  fb.style.display="block";
+  const bn=document.getElementById("btn-next");bn.style.display="block";
+  bn.textContent=(idx+1>=qs.length)?"結果を見る →":"次の問題 →";
+}
+function nextQ(){idx++;if(idx>=qs.length){showResult();}else{picked=null;renderQ();}}
+function showResult(){
+  document.getElementById("quiz-screen").style.display="none";
+  document.getElementById("result-screen").style.display="block";
+  const tot=qs.length,pct=Math.round((score/tot)*100);
+  document.getElementById("res-num").textContent=score;
+  document.getElementById("res-denom").textContent="/ "+tot+"問";
+  const ts=[["もっと頑張ろう！","テキストに戻って基礎をしっかり確認しましょう。"],["もう少し！","苦手な分野を重点的に復習してみましょう。"],["よくできました！","あと一歩です。間違えた問題を中心に復習しましょう。"],["すばらしい！","ほぼ完璧です。自信をもって本番に臨みましょう！"]];
+  const ti=pct>=90?3:pct>=70?2:pct>=50?1:0;
+  document.getElementById("res-title").textContent=ts[ti][0];
+  document.getElementById("res-msg").textContent=ts[ti][1];
+  const bd=document.getElementById("breakdown");bd.innerHTML="";
+  CATS.forEach(cat=>{
+    const cqs=qs.filter(q=>q.cat===cat);if(!cqs.length)return;
+    const cs=cqs.filter(q=>{const i=qs.indexOf(q);return userAns[i]===q.ans;}).length;
+    const d=document.createElement("div");d.className="bd-item";
+    d.innerHTML=`<div style="font-size:12px;color:#666;margin-bottom:4px">${ICONS[cat]} ${cat}</div><div style="font-size:22px;font-weight:700;color:#1a3a6b">${cs} / ${cqs.length}</div>`;
+    bd.appendChild(d);
+  });
+  const rc=document.getElementById("review-card"),rl=document.getElementById("review-list");rl.innerHTML="";
+  if(wrongs.length){
+    rc.style.display="block";
+    wrongs.forEach(w=>{
+      const d=document.createElement("div");d.className="review-item";
+      d.innerHTML=`<div style="font-weight:600;margin-bottom:6px;line-height:1.5">${w.q}</div><div style="color:#1a6b3a;margin-bottom:2px">✓ 正解：${w.correct}</div><div style="color:#c0392b">✗ あなたの回答：${w.yours}</div>`;
+      rl.appendChild(d);
+    });
+  }else rc.style.display="none";
+}
+function retryQuiz(){qs=shuffle([...qs]);idx=0;picked=null;score=0;wrongs=[];userAns=[];document.getElementById("result-screen").style.display="none";document.getElementById("quiz-screen").style.display="block";renderQ();}
+function backToStart(){document.getElementById("result-screen").style.display="none";document.getElementById("start-screen").style.display="block";}
+renderCats();
+</script>
+</body>
+</html>
